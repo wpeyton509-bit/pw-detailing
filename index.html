@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P&W MOBILE DETAILING | Lynnwood's Premier Mobile Auto Detailing</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playball&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: {
+                            50: '#FCFAF7',
+                            100: '#FAF7F2',
+                            200: '#F4EEE5',
+                            300: '#EAE1D3',
+                        },
+                        charcoal: {
+                            800: '#262320',
+                            900: '#1C1917',
+                        },
+                        bronze: {
+                            500: '#DB7D3E',
+                            600: '#C86428',
+                            700: '#A04A15',
+                        }
+                    },
+                    fontFamily: {
+                        cursive: ['Playball', 'cursive'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FAF7F2;
+            color: #1C1917;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .classy-glow {
+            text-shadow: 0 0 12px rgba(200, 100, 40, 0.25);
+        }
+        .soft-card-shadow {
+            box-shadow: 0 10px 30px -5px rgba(28, 25, 23, 0.05), 0 4px 12px -2px rgba(28, 25, 23, 0.03);
+        }
+        /* Custom Before/After Interactive Slider */
+        .ba-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            user-select: none;
+        }
+        .ba-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 50%;
+            overflow: hidden;
+        }
+        .ba-slider {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            background: #C86428;
+            cursor: ew-resize;
+            transform: translateX(-50%);
+        }
+        .ba-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #C86428;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px rgba(200, 100, 40, 0.4);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between antialiased">
+
+    <!-- NAVIGATION BAR -->
+    <header class="sticky top-0 z-40 bg-cream-100/90 backdrop-blur-md border-b border-cream-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 rounded-full bg-charcoal-900 flex items-center justify-center border border-bronze-600/40 shadow-sm group-hover:border-bronze-600 transition">
+                    <span class="font-cursive text-2xl text-bronze-600 classy-glow">P&W</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-cursive text-2xl tracking-wide text-charcoal-900 classy-glow font-bold leading-none">P&W MOBILE DETAILING</span>
+                    <span class="text-[10px] uppercase tracking-[0.2em] font-semibold text-bronze-600 mt-1">Lynnwood, WA & Surrounding Areas</span>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-charcoal-800">
+                <a href="#how-it-works" class="hover:text-bronze-600 transition">Booking Experience</a>
+                <a href="#interior-focus" class="hover:text-bronze-600 transition">Interior Restorations</a>
+                <a href="#services" class="hover:text-bronze-600 transition">Packages</a>
+                <a href="#transformation" class="hover:text-bronze-600 transition">Results</a>
+                <a href="#reviews" class="hover:text-bronze-600 transition">Reviews</a>
+            </nav>
+
+            <!-- CTA Buttons -->
+            <div class="flex items-center gap-4">
+                <a href="#calculator" class="hidden sm:inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-charcoal-900 hover:text-bronze-600 transition px-3 py-2">
+                    <i class="fa-solid fa-calculator text-bronze-600"></i> Instant Quote
+                </a>
+                <button onclick="openBookingModal()" class="bg-bronze-600 hover:bg-bronze-700 text-white text-sm font-semibold px-5 py-2.5 rounded-lg shadow-md transition transform hover:-translate-y-0.5">
+                    Book Appointment
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative py-16 lg:py-24 overflow-hidden bg-gradient-to-b from-cream-100 via-cream-200 to-cream-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Text Content -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-bronze-600/10 border border-bronze-600/30 text-bronze-700 text-xs font-semibold uppercase tracking-wider">
+                        <i class="fa-solid fa-car"></i> Mobile Auto Detailing Brought Direct To You
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-charcoal-900 tracking-tight leading-[1.15]">
+                        Lynnwood’s Choice For <br/>
+                        <span class="font-cursive text-bronze-600 font-normal classy-glow text-5xl sm:text-6xl lg:text-7xl">P&W MOBILE DETAILING</span> <br/>
+                        Excellence & Precision
+                    </h1>
+
+                    <p class="text-lg text-charcoal-800/80 max-w-2xl font-normal leading-relaxed mx-auto lg:mx-0">
+                        Enjoy a completely hassle-free customer experience from effortless online appointment scheduling to hot water carpet extraction, leather conditioning, stain removal, and showroom paint protection across Lynnwood, Edmonds, and Mill Creek.
+                    </p>
+
+                    <!-- Feature Badges -->
+                    <div class="pt-2 flex flex-wrap gap-4 justify-center lg:justify-start text-xs font-semibold text-charcoal-900">
+                        <span class="flex items-center gap-2 px-3 py-2 bg-white rounded-md border border-cream-300 soft-card-shadow">
+                            <i class="fa-solid fa-calendar-check text-bronze-600"></i> Seamless Online Booking
+                        </span>
+                        <span class="flex items-center gap-2 px-3 py-2 bg-white rounded-md border border-cream-300 soft-card-shadow">
+                            <i class="fa-solid fa-wand-magic-sparkles text-bronze-600"></i> Deep Hot Water Extraction
+                        </span>
+                        <span class="flex items-center gap-2 px-3 py-2 bg-white rounded-md border border-cream-300 soft-card-shadow">
+                            <i class="fa-solid fa-location-dot text-bronze-600"></i> Serving Lynnwood & Surrounds
+                        </span>
+                    </div>
+
+                    <!-- Call to Actions -->
+                    <div class="pt-4 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <button onclick="openBookingModal()" class="bg-bronze-600 hover:bg-bronze-700 text-white font-bold text-base px-8 py-3.5 rounded-lg shadow-lg transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-calendar-days"></i> Book Appointment
+                        </button>
+                        <a href="#calculator" class="bg-white hover:bg-cream-50 text-charcoal-900 font-semibold text-base px-7 py-3.5 rounded-lg border border-cream-300 shadow-sm transition flex items-center justify-center gap-2">
+                            Calculate Instant Quote
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Visual Display Card -->
+                <div class="lg:col-span-5">
+                    <div class="bg-white p-6 rounded-2xl border border-cream-300 soft-card-shadow relative">
+                        <div class="absolute -top-3 -right-3 bg-bronze-600 text-white font-bold text-xs uppercase tracking-wider px-3 py-1 rounded-full shadow">
+                            Interior Focus
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="rounded-xl overflow-hidden relative group">
+                                <img src="https://images.unsplash.com/photo-1507136566006-cfc505b114fe?auto=format&fit=crop&w=800&q=80" alt="Detailing interior focus" class="w-full h-64 object-cover group-hover:scale-105 transition duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-t from-charcoal-900/80 via-transparent to-transparent flex items-end p-4">
+                                    <p class="text-white text-sm font-medium">Vent detailing, leather care, & deep seat cleaning</p>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-3 pt-2">
+                                <div class="p-3 bg-cream-100 rounded-lg border border-cream-300">
+                                    <div class="text-xs text-charcoal-800/70">Typical Duration</div>
+                                    <div class="text-base font-bold text-charcoal-900">2.5 – 4.0 Hours</div>
+                                </div>
+                                <div class="p-3 bg-cream-100 rounded-lg border border-cream-300">
+                                    <div class="text-xs text-charcoal-800/70">Client Rating</div>
+                                    <div class="text-base font-bold text-bronze-600">5.0 ★★★★★</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CUSTOMER BOOKING EXPERIENCE / HOW IT WORKS SECTION -->
+    <section id="how-it-works" class="py-16 bg-white border-y border-cream-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto space-y-2 mb-12">
+                <span class="text-xs font-bold uppercase tracking-widest text-bronze-600">Simple & Stress-Free</span>
+                <h2 class="text-3xl font-extrabold text-charcoal-900">Seamless Customer Booking Experience</h2>
+                <p class="text-sm text-charcoal-800/70">At P&W MOBILE DETAILING, getting your vehicle detailed is as easy as 1-2-3.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="bg-cream-50 p-6 rounded-xl border border-cream-300 relative text-center space-y-3">
+                    <div class="w-10 h-10 rounded-full bg-bronze-600 text-white font-bold flex items-center justify-center mx-auto text-base">1</div>
+                    <h3 class="text-lg font-bold text-charcoal-900">Select Package & Estimate</h3>
+                    <p class="text-xs text-charcoal-800/80 leading-relaxed">
+                        Pick your preferred interior or full detail package, or use our instant price estimator to customize add-ons for your specific vehicle.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-cream-50 p-6 rounded-xl border border-cream-300 relative text-center space-y-3">
+                    <div class="w-10 h-10 rounded-full bg-bronze-600 text-white font-bold flex items-center justify-center mx-auto text-base">2</div>
+                    <h3 class="text-lg font-bold text-charcoal-900">Choose Date & Arrival Time</h3>
+                    <p class="text-xs text-charcoal-800/80 leading-relaxed">
+                        Select a morning or afternoon appointment time that aligns perfectly with your schedule using our fast online form.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-cream-50 p-6 rounded-xl border border-cream-300 relative text-center space-y-3">
+                    <div class="w-10 h-10 rounded-full bg-bronze-600 text-white font-bold flex items-center justify-center mx-auto text-base">3</div>
+                    <h3 class="text-lg font-bold text-charcoal-900">Instant SMS & Email Alerts</h3>
+                    <p class="text-xs text-charcoal-800/80 leading-relaxed">
+                        Receive instant automated confirmations via SMS and Email with complete booking summaries and ETA tracker notifications.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICE AREA VALIDATOR SECTION -->
+    <section id="service-area" class="py-12 bg-cream-50 border-b border-cream-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-2xl p-6 sm:p-8 border border-cream-300 soft-card-shadow flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="space-y-1 text-center md:text-left">
+                    <div class="text-xs uppercase tracking-widest font-bold text-bronze-600">Local Mobile Coverage</div>
+                    <h3 class="text-2xl font-bold text-charcoal-900">Check Mobile Detailing Service in Your ZIP Code</h3>
+                    <p class="text-sm text-charcoal-800/70">Serving Lynnwood, Edmonds, Mill Creek, Mountlake Terrace, Mukilteo, and Bothell.</p>
+                </div>
+
+                <div class="w-full md:w-auto flex flex-col sm:flex-row gap-2">
+                    <input type="text" id="zipInput" placeholder="Enter ZIP Code (e.g. 98036)" class="px-4 py-3 bg-cream-50 border border-cream-300 rounded-lg text-sm text-charcoal-900 focus:outline-none focus:border-bronze-600 w-full sm:w-64">
+                    <button onclick="checkZipCode()" class="bg-charcoal-900 hover:bg-charcoal-800 text-white font-semibold px-6 py-3 rounded-lg text-sm transition">
+                        Verify ZIP
+                    </button>
+                </div>
+            </div>
+            <div id="zipResult" class="mt-3 text-center md:text-right font-medium text-sm hidden"></div>
+        </div>
+    </section>
+
+    <!-- INTERIOR DETAILED SPOTLIGHT SECTION -->
+    <section id="interior-focus" class="py-20 bg-cream-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-3 mb-16">
+                <span class="text-xs font-bold uppercase tracking-widest text-bronze-600">Specialized Craftsmanship</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-charcoal-900">Deep Interior Restorations</h2>
+                <p class="text-charcoal-800/80">P&W MOBILE DETAILING restores interior comfort and air quality through proven deep extraction, leather nourishment, and fine crevice cleaning.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white p-8 rounded-2xl border border-cream-300 soft-card-shadow space-y-4 hover:border-bronze-600/50 transition">
+                    <div class="w-12 h-12 rounded-xl bg-bronze-600/10 flex items-center justify-center text-bronze-600 text-xl font-bold">
+                        <i class="fa-solid fa-soap"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-charcoal-900">Hot Water Carpet Extraction</h3>
+                    <p class="text-sm text-charcoal-800/80 leading-relaxed">
+                        Heavy-duty hot water extraction penetrates deep into carpets and cloth seats, loosening set-in dirt, coffee spills, mud, and tough salt stains.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-white p-8 rounded-2xl border border-cream-300 soft-card-shadow space-y-4 hover:border-bronze-600/50 transition">
+                    <div class="w-12 h-12 rounded-xl bg-bronze-600/10 flex items-center justify-center text-bronze-600 text-xl font-bold">
+                        <i class="fa-solid fa-feather"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-charcoal-900">Leather Deep-Clean & Conditioning</h3>
+                    <p class="text-sm text-charcoal-800/80 leading-relaxed">
+                        Gentle, pH-balanced leather cleaners extract grime and oil buildup, followed by premium reconditioning creams that keep leather soft and supple.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-white p-8 rounded-2xl border border-cream-300 soft-card-shadow space-y-4 hover:border-bronze-600/50 transition">
+                    <div class="w-12 h-12 rounded-xl bg-bronze-600/10 flex items-center justify-center text-bronze-600 text-xl font-bold">
+                        <i class="fa-solid fa-wind"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-charcoal-900">Vent & Fine Crevice Brushwork</h3>
+                    <p class="text-sm text-charcoal-800/80 leading-relaxed">
+                        Precision detailing brushes eliminate hidden dust from AC vents, cup holders, center consoles, door seams, and steering column controls.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PACKAGES SECTION -->
+    <section id="services" class="py-20 bg-cream-50 border-t border-cream-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-3 mb-16">
+                <span class="text-xs font-bold uppercase tracking-widest text-bronze-600">Tailored Mobile Packages</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-charcoal-900">P&W MOBILE DETAILING Service Menu</h2>
+                <p class="text-charcoal-800/80">Transparent pricing and clear package inclusions with zero surprise charges.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Package 1: Deep Interior -->
+                <div class="bg-white rounded-2xl p-8 border border-cream-300 soft-card-shadow flex flex-col justify-between relative hover:border-bronze-600 transition">
+                    <div class="space-y-6">
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-bronze-600">Interior Popular Choice</span>
+                            <h3 class="text-2xl font-bold text-charcoal-900 mt-1">Deep Interior Sanctuary</h3>
+                            <p class="text-sm text-charcoal-800/70 mt-1">Complete cabin extraction & sanitization.</p>
+                        </div>
+                        <div class="text-3xl font-extrabold text-charcoal-900">
+                            $189 <span class="text-sm font-normal text-charcoal-800/60">/ sedan</span>
+                        </div>
+
+                        <ul class="space-y-3 text-sm text-charcoal-800">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-bronze-600"></i> Hot water carpet & seat extraction</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-bronze-600"></i> Leather scrubbing & rich conditioner</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-bronze-600"></i> Full dashboard, console & vent detail</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-bronze-600"></i> Interior streak-free glass polish</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-bronze-600"></i> Trunk vacuum & spot extraction</li>
+                        </ul>
+                    </div>
+                    <button onclick="openBookingModal('Deep Interior Sanctuary ($189)')" class="mt-8 w-full bg-bronze-600 hover:bg-bronze-700 text-white font-bold py-3 rounded-lg transition">
+                        Book This Package
+                    </button>
+                </div>
+
+                <!-- Package 2: Full Masterpiece -->
+                <div class="bg-white rounded-2xl p-8 border-2 border-bronze-600 soft-card-shadow flex flex-col justify-between relative transform lg:-translate-y-2">
+                    <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-bronze-600 text-white text-xs font-bold uppercase tracking-wider px-4 py-1 rounded-full">
+                        Best Value
+                    </div>
+                    <div class="space-y-6">
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-bronze-600">Full Mobile Transformation</span>
+                            <h3 class="text-2xl font-bold text-charcoal-900 mt-1">The Masterpiece Detail</h3>
+                            <p class="text-sm text-charcoal-800/70 mt-1">Complete interior restoration plus hand paint care.</p>
+                        </div>
+                        <div class="text-3xl font-extrabold text-charcoal-900">
+                            $289 <span class="text-sm font-normal text-charcoal-800/60">/ sedan</span>
+                        </div>
+
+                        <ul class="space-y-3 text-sm text-charcoal-800">
+                            <li class="flex items-center gap-3 font-semibold"><i class="fa-solid fa-star text-bronze-600"></i> Includes EVERYTHING in Deep Interior</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-bronze-600"></i> Multi-stage exterior hand wash</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-bronze-600"></i> Clay bar paint decontamination</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-bronze-600"></i> Hydrophobic paint sealant layer</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-bronze-600"></i> Wheel barrels clean & tire dressing</li>
+                        </ul>
+                    </div>
+                    <button onclick="openBookingModal('The Masterpiece Detail ($289)')" class="mt-8 w-full bg-charcoal-900 hover:bg-charcoal-800 text-white font-bold py-3 rounded-lg transition">
+                        Book This Package
+                    </button>
+                </div>
+
+                <!-- Package 3: Exterior Hand Detail -->
+                <div class="bg-white rounded-2xl p-8 border border-cream-300 soft-card-shadow flex flex-col justify-between relative hover:border-bronze-600 transition">
+                    <div class="space-y-6">
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-bronze-600">Exterior Protection</span>
+                            <h3 class="text-2xl font-bold text-charcoal-900 mt-1">Hand Wash & Gloss</h3>
+                            <p class="text-sm text-charcoal-800/70 mt-1">Traditional hand washing and glossy sealant.</p>
+                        </div>
+                        <div class="text-3xl font-extrabold text-charcoal-900">
+                            $129 <span class="text-sm font-normal text-charcoal-800/60">/ sedan</span>
+                        </div>
+
+                        <ul class="space-y-3 text-sm text-charcoal-800">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-bronze-600"></i> Gentle microfiber hand wash</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-bronze-600"></i> Bug & tar removal treatment</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-bronze-600"></i> Spray wax gloss shine boost</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-bronze-600"></i> Brake dust removal & rim detail</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-bronze-600"></i> Premium non-sling tire shine</li>
+                        </ul>
+                    </div>
+                    <button onclick="openBookingModal('Hand Wash & Gloss ($129)')" class="mt-8 w-full bg-bronze-600 hover:bg-bronze-700 text-white font-bold py-3 rounded-lg transition">
+                        Book This Package
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BEFORE & AFTER INTERIOR SLIDER SECTION -->
+    <section id="transformation" class="py-20 bg-cream-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-3 mb-12">
+                <span class="text-xs font-bold uppercase tracking-widest text-bronze-600">Visual Proof</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-charcoal-900">Real Transformation Results</h2>
+                <p class="text-charcoal-800/80">Drag the slider below to see how our hot water extraction removes set-in grime and stains.</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="ba-container h-[420px] soft-card-shadow border border-cream-300" id="baSlider">
+                    <!-- Cleaned (After) Image -->
+                    <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1200&q=80" alt="After detail" class="w-full h-full object-cover">
+                    <div class="absolute bottom-4 right-4 bg-charcoal-900/90 text-white text-xs font-bold px-3 py-1.5 rounded-md">
+                        AFTER: Deep Extracted & Restored
+                    </div>
+
+                    <!-- Dirty (Before) Image Overlay -->
+                    <div class="ba-overlay" id="baOverlay">
+                        <img src="https://images.unsplash.com/photo-1507136566006-cfc505b114fe?auto=format&fit=crop&w=1200&q=80" alt="Before detail" class="w-full h-full object-cover max-w-none" style="width: 100%;">
+                        <div class="absolute bottom-4 left-4 bg-bronze-600/90 text-white text-xs font-bold px-3 py-1.5 rounded-md">
+                            BEFORE: Dirt & Stain Buildup
+                        </div>
+                    </div>
+
+                    <!-- Handle -->
+                    <div class="ba-slider" id="baHandle">
+                        <div class="ba-button">
+                            <i class="fa-solid fa-arrows-left-right text-xs"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSTANT QUOTE ESTIMATOR -->
+    <section id="calculator" class="py-20 bg-cream-50 border-t border-cream-300">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-2xl p-8 border border-cream-300 soft-card-shadow space-y-8">
+                <div class="text-center space-y-2">
+                    <span class="text-xs font-bold uppercase tracking-widest text-bronze-600">Interactive Estimator</span>
+                    <h2 class="text-3xl font-extrabold text-charcoal-900">Calculate Your Detailing Quote</h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Vehicle Size -->
+                    <div class="space-y-2">
+                        <label class="text-sm font-bold text-charcoal-900">1. Select Vehicle Size</label>
+                        <select id="calcVehicle" onchange="calculateQuote()" class="w-full px-4 py-3 bg-cream-50 border border-cream-300 rounded-lg text-sm text-charcoal-900 focus:outline-none focus:border-bronze-600">
+                            <option value="0">Coupe / Sedan (Base)</option>
+                            <option value="30">Crossover / Mid-SUV (+$30)</option>
+                            <option value="50">Full-Size Truck / 3-Row SUV (+$50)</option>
+                        </select>
+                    </div>
+
+                    <!-- Primary Package -->
+                    <div class="space-y-2">
+                        <label class="text-sm font-bold text-charcoal-900">2. Select Primary Package</label>
+                        <select id="calcPackage" onchange="calculateQuote()" class="w-full px-4 py-3 bg-cream-50 border border-cream-300 rounded-lg text-sm text-charcoal-900 focus:outline-none focus:border-bronze-600">
+                            <option value="189">Deep Interior Sanctuary ($189)</option>
+                            <option value="289">The Masterpiece (Full Int + Ext) ($289)</option>
+                            <option value="129">Hand Wash & Gloss ($129)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Add-ons -->
+                <div class="space-y-3">
+                    <label class="text-sm font-bold text-charcoal-900">3. Optional Add-On Services</label>
+                    <div class="grid sm:grid-cols-2 gap-3">
+                        <label class="flex items-center gap-3 p-3 bg-cream-50 rounded-lg border border-cream-300 cursor-pointer">
+                            <input type="checkbox" id="addonPet" onchange="calculateQuote()" value="45" class="accent-bronze-600">
+                            <span class="text-sm text-charcoal-900 font-medium">Pet Hair Extraction (+$45)</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3 bg-cream-50 rounded-lg border border-cream-300 cursor-pointer">
+                            <input type="checkbox" id="addonOzone" onchange="calculateQuote()" value="55" class="accent-bronze-600">
+                            <span class="text-sm text-charcoal-900 font-medium">Ozone Odor Elimination (+$55)</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3 bg-cream-50 rounded-lg border border-cream-300 cursor-pointer">
+                            <input type="checkbox" id="addonLeather" onchange="calculateQuote()" value="40" class="accent-bronze-600">
+                            <span class="text-sm text-charcoal-900 font-medium">Leather Protection Guard (+$40)</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3 bg-cream-50 rounded-lg border border-cream-300 cursor-pointer">
+                            <input type="checkbox" id="addonEngine" onchange="calculateQuote()" value="50" class="accent-bronze-600">
+                            <span class="text-sm text-charcoal-900 font-medium">Engine Bay Hand Detail (+$50)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Calculated Output -->
+                <div class="pt-6 border-t border-cream-300 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div>
+                        <div class="text-xs text-charcoal-800/70 uppercase tracking-wider font-bold">Estimated Total</div>
+                        <div class="text-3xl font-extrabold text-bronze-600" id="quoteTotal">$189.00</div>
+                    </div>
+                    <button onclick="openBookingModalWithQuote()" class="w-full sm:w-auto bg-bronze-600 hover:bg-bronze-700 text-white font-bold px-8 py-3.5 rounded-lg shadow-md transition">
+                        Book With Calculated Quote
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CUSTOMER REVIEWS SECTION -->
+    <section id="reviews" class="py-20 bg-cream-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-3 mb-16">
+                <span class="text-xs font-bold uppercase tracking-widest text-bronze-600">Client Reviews</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-charcoal-900">What Local Drivers Say</h2>
+                <p class="text-charcoal-800/80">Feedback from recent P&W MOBILE DETAILING clients across Lynnwood and surrounding areas.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="bg-white p-8 rounded-2xl border border-cream-300 soft-card-shadow space-y-4">
+                    <div class="flex text-bronze-600 text-sm gap-1">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-sm text-charcoal-800/80 italic">
+                        "Booking online was so smooth! P&W MOBILE DETAILING arrived right on time at my driveway in Lynnwood and did an incredible job extracting old coffee stains from my Outback seats."
+                    </p>
+                    <div class="pt-2 border-t border-cream-200 flex justify-between items-center text-xs">
+                        <span class="font-bold text-charcoal-900">Marcus T.</span>
+                        <span class="text-bronze-600 font-semibold">Lynnwood, WA</span>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-white p-8 rounded-2xl border border-cream-300 soft-card-shadow space-y-4">
+                    <div class="flex text-bronze-600 text-sm gap-1">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-sm text-charcoal-800/80 italic">
+                        "Top-notch service! They conditioned the leather seats in my Audi and cleaned out every dust crevice. Choosing my date and time slot online made scheduling effortless."
+                    </p>
+                    <div class="pt-2 border-t border-cream-200 flex justify-between items-center text-xs">
+                        <span class="font-bold text-charcoal-900">Sarah H.</span>
+                        <span class="text-bronze-600 font-semibold">Edmonds, WA</span>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-white p-8 rounded-2xl border border-cream-300 soft-card-shadow space-y-4">
+                    <div class="flex text-bronze-600 text-sm gap-1">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-sm text-charcoal-800/80 italic">
+                        "The Masterpiece Detail is worth every penny. Exterior gloss and interior deep cleaning were unmatched. P&W MOBILE DETAILING is definitely my go-to team."
+                    </p>
+                    <div class="pt-2 border-t border-cream-200 flex justify-between items-center text-xs">
+                        <span class="font-bold text-charcoal-900">David L.</span>
+                        <span class="text-bronze-600 font-semibold">Mill Creek, WA</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-charcoal-900 text-cream-100 py-12 border-t border-charcoal-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
+            <div class="space-y-4 md:col-span-2">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-cream-100 flex items-center justify-center border border-bronze-600">
+                        <span class="font-cursive text-xl text-bronze-600">P&W</span>
+                    </div>
+                    <span class="font-cursive text-2xl text-cream-100">P&W MOBILE DETAILING</span>
+                </div>
+                <p class="text-xs text-cream-300/70 max-w-sm leading-relaxed">
+                    Lynnwood’s premier mobile detailing service. Bringing hot water extraction, leather reconditioning, and paint gloss care right to your doorstep.
+                </p>
+            </div>
+
+            <div class="space-y-3 text-xs">
+                <div class="font-bold text-bronze-500 uppercase tracking-wider">Service Coverage</div>
+                <ul class="space-y-1.5 text-cream-300/80">
+                    <li>Lynnwood (98036, 98037, 98087)</li>
+                    <li>Edmonds & Woodway (98020)</li>
+                    <li>Mill Creek & Bothell (98012)</li>
+                    <li>Mountlake Terrace (98043)</li>
+                    <li>Mukilteo (98275)</li>
+                </ul>
+            </div>
+
+            <div class="space-y-3 text-xs">
+                <div class="font-bold text-bronze-500 uppercase tracking-wider">Contact & Hours</div>
+                <ul class="space-y-1.5 text-cream-300/80">
+                    <li><i class="fa-solid fa-phone text-bronze-500 mr-2"></i> (425) 555-DETAIL</li>
+                    <li><i class="fa-solid fa-envelope text-bronze-500 mr-2"></i> info@pwmobiledetailing.com</li>
+                    <li><i class="fa-solid fa-clock text-bronze-500 mr-2"></i> Mon – Sat: 8:00 AM – 6:00 PM</li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 mt-8 border-t border-charcoal-800 text-center text-xs text-cream-300/50">
+            &copy; 2026 P&W MOBILE DETAILING. All rights reserved. Lynnwood, Washington.
+        </div>
+    </footer>
+
+    <!-- BOOKING APPOINTMENT MODAL WITH DUAL PREVIEW TABS -->
+    <div id="bookingModal" class="fixed inset-0 z-50 hidden bg-charcoal-900/75 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-2xl max-w-xl w-full p-6 sm:p-8 border border-cream-300 soft-card-shadow relative space-y-6 my-8">
+            <!-- Close Button -->
+            <button onclick="closeBookingModal()" class="absolute top-5 right-5 text-charcoal-800/60 hover:text-charcoal-900 text-xl font-bold transition">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- Modal Header -->
+            <div class="border-b border-cream-200 pb-4">
+                <span class="text-xs font-bold uppercase tracking-widest text-bronze-600">P&W MOBILE DETAILING</span>
+                <h3 class="text-2xl font-bold text-charcoal-900" id="modalTitle">Schedule Your Appointment</h3>
+            </div>
+
+            <!-- VIEW 1: BOOKING FORM -->
+            <form id="bookingForm" onsubmit="handleBookingSubmit(event)" class="space-y-4">
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div class="space-y-1">
+                        <label class="text-xs font-bold text-charcoal-900">Full Name</label>
+                        <input type="text" id="custName" required placeholder="John Doe" class="w-full px-3 py-2 bg-cream-50 border border-cream-300 rounded-lg text-sm text-charcoal-900 focus:outline-none focus:border-bronze-600">
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-xs font-bold text-charcoal-900">Phone Number</label>
+                        <input type="tel" id="custPhone" required placeholder="(425) 555-0199" class="w-full px-3 py-2 bg-cream-50 border border-cream-300 rounded-lg text-sm text-charcoal-900 focus:outline-none focus:border-bronze-600">
+                    </div>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div class="space-y-1">
+                        <label class="text-xs font-bold text-charcoal-900">Vehicle Make / Model</label>
+                        <input type="text" id="custVehicle" required placeholder="e.g. 2023 Subaru Outback" class="w-full px-3 py-2 bg-cream-50 border border-cream-300 rounded-lg text-sm text-charcoal-900 focus:outline-none focus:border-bronze-600">
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-xs font-bold text-charcoal-900">Service Location ZIP</label>
+                        <input type="text" id="custZip" required placeholder="98036" class="w-full px-3 py-2 bg-cream-50 border border-cream-300 rounded-lg text-sm text-charcoal-900 focus:outline-none focus:border-bronze-600">
+                    </div>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div class="space-y-1">
+                        <label class="text-xs font-bold text-charcoal-900">Preferred Date</label>
+                        <input type="date" id="custDate" required class="w-full px-3 py-2 bg-cream-50 border border-cream-300 rounded-lg text-sm text-charcoal-900 focus:outline-none focus:border-bronze-600">
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-xs font-bold text-charcoal-900">Preferred Time Slot</label>
+                        <select id="custTime" required class="w-full px-3 py-2 bg-cream-50 border border-cream-300 rounded-lg text-sm text-charcoal-900 focus:outline-none focus:border-bronze-600">
+                            <option value="Morning (8:00 AM - 12:00 PM)">Morning (8:00 AM - 12:00 PM)</option>
+                            <option value="Afternoon (12:00 PM - 4:00 PM)">Afternoon (12:00 PM - 4:00 PM)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="space-y-1">
+                    <label class="text-xs font-bold text-charcoal-900">Selected Package & Notes</label>
+                    <input type="text" id="modalPackageField" value="Deep Interior Sanctuary ($189)" class="w-full px-3 py-2 bg-cream-200 border border-cream-300 rounded-lg text-sm font-semibold text-charcoal-900" readonly>
+                </div>
+
+                <button type="submit" class="w-full bg-bronze-600 hover:bg-bronze-700 text-white font-bold py-3 rounded-lg shadow-md transition">
+                    Confirm Appointment Request
+                </button>
+            </form>
+
+            <!-- VIEW 2: INTERACTIVE CONFIRMATION PREVIEW (SMS & EMAIL TABS) -->
+            <div id="confirmationView" class="hidden space-y-6">
+                
+                <!-- Success Alert Header -->
+                <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-xl flex items-start gap-3">
+                    <div class="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center shrink-0 font-bold text-sm">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-emerald-900 text-sm">Appointment Scheduled!</h4>
+                        <p class="text-xs text-emerald-800">Your detailing slot is locked in. Below is a live preview of the automated confirmations sent to your mobile device and inbox.</p>
+                    </div>
+                </div>
+
+                <!-- Preview Tab Selector -->
+                <div class="flex rounded-lg bg-cream-200 p-1 border border-cream-300">
+                    <button id="btnTabSms" onclick="switchPreviewTab('sms')" class="flex-1 py-2 text-xs font-bold rounded-md bg-white text-charcoal-900 shadow-sm transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-comment-sms text-bronze-600"></i> SMS Text Preview
+                    </button>
+                    <button id="btnTabEmail" onclick="switchPreviewTab('email')" class="flex-1 py-2 text-xs font-bold rounded-md text-charcoal-800 hover:text-charcoal-900 transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-envelope text-bronze-600"></i> Email Preview
+                    </button>
+                </div>
+
+                <!-- TAB CONTENT 1: SMS PREVIEW -->
+                <div id="tabContentSms" class="space-y-3">
+                    <div class="bg-charcoal-900 rounded-3xl p-4 sm:p-5 border-4 border-charcoal-800 shadow-xl max-w-sm mx-auto space-y-4">
+                        <!-- Phone Notch / Header -->
+                        <div class="flex justify-between items-center text-[10px] text-cream-300/60 pb-2 border-b border-charcoal-800">
+                            <span class="font-bold text-white"><i class="fa-solid fa-car text-bronze-500 mr-1"></i> P&W DETAILING</span>
+                            <span>Just now</span>
+                        </div>
+                        
+                        <!-- SMS Chat Bubble -->
+                        <div class="bg-bronze-600 text-white rounded-2xl rounded-tl-xs p-3.5 text-xs leading-relaxed shadow-sm">
+                            <p class="font-bold mb-1">P&W MOBILE DETAILING Alert 🚗✨</p>
+                            <p id="smsBodyText">
+                                Hi John! Your mobile detailing appointment for <strong>Deep Interior Sanctuary</strong> is confirmed for <strong>Mon, Oct 12</strong> during <strong>Morning (8:00 AM - 12:00 PM)</strong> at ZIP <strong>98036</strong>.
+                            </p>
+                            <p class="mt-2 text-[11px] opacity-90">Our team will text when en route to your driveway. Reply C to reschedule.</p>
+                        </div>
+                        <div class="text-[10px] text-center text-cream-300/40 uppercase tracking-widest pt-1">Automated Booking Notification</div>
+                    </div>
+                </div>
+
+                <!-- TAB CONTENT 2: EMAIL PREVIEW -->
+                <div id="tabContentEmail" class="hidden space-y-3">
+                    <div class="bg-cream-50 border border-cream-300 rounded-xl overflow-hidden shadow-sm">
+                        <!-- Email Header -->
+                        <div class="bg-charcoal-900 text-white p-4 flex items-center justify-between border-b border-bronze-600">
+                            <div class="flex items-center gap-2">
+                                <span class="font-cursive text-xl text-bronze-500">P&W</span>
+                                <span class="font-cursive text-lg font-bold">P&W MOBILE DETAILING</span>
+                            </div>
+                            <span class="text-[10px] uppercase font-bold bg-bronze-600 text-white px-2 py-0.5 rounded">Confirmed</span>
+                        </div>
+
+                        <!-- Email Body Content -->
+                        <div class="p-5 space-y-4 text-xs text-charcoal-800">
+                            <div>
+                                <h4 class="text-base font-bold text-charcoal-900">Your Mobile Detailing Appointment is Set!</h4>
+                                <p class="text-charcoal-800/80 mt-0.5">Thank you for choosing P&W Mobile Detailing. We bring showroom perfection straight to your doorstep.</p>
+                            </div>
+
+                            <div class="bg-white p-3.5 rounded-lg border border-cream-300 space-y-2">
+                                <div class="font-bold text-charcoal-900 uppercase text-[10px] text-bronze-600 tracking-wider">Appointment Summary</div>
+                                <div class="grid grid-cols-2 gap-2 text-xs">
+                                    <div><strong class="text-charcoal-900">Client:</strong> <span id="emailCustName">John Doe</span></div>
+                                    <div><strong class="text-charcoal-900">Vehicle:</strong> <span id="emailCustVehicle">2023 Subaru Outback</span></div>
+                                    <div><strong class="text-charcoal-900">Date:</strong> <span id="emailCustDate">Mon, Oct 12</span></div>
+                                    <div><strong class="text-charcoal-900">Window:</strong> <span id="emailCustTime">Morning</span></div>
+                                    <div class="col-span-2 border-t border-cream-200 pt-1.5 mt-1">
+                                        <strong class="text-charcoal-900">Package:</strong> <span id="emailCustPackage" class="text-bronze-700 font-bold">Deep Interior Sanctuary ($189)</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-1.5 bg-bronze-600/10 p-3 rounded-lg border border-bronze-600/20 text-charcoal-900">
+                                <div class="font-bold text-bronze-700 text-xs"><i class="fa-solid fa-circle-info mr-1"></i> Pre-Arrival Checklist:</div>
+                                <ul class="list-disc list-inside space-y-1 text-[11px] text-charcoal-800/80">
+                                    <li>Please remove personal valuables from your vehicle cabin & trunk.</li>
+                                    <li>Ensure space for our mobile detailing unit adjacent to your driveway.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Action Buttons -->
+                <div class="pt-2 flex justify-end">
+                    <button onclick="closeBookingModal()" class="w-full bg-charcoal-900 hover:bg-charcoal-800 text-white font-bold py-2.5 rounded-lg text-sm transition">
+                        Done & Close
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Service Area ZIP Code Validator
+        const validZips = ['98036', '98037', '98046', '98087', '98020', '98026', '98043', '98012', '98021', '98082', '98275', '98133', '98155'];
+        
+        function checkZipCode() {
+            const input = document.getElementById('zipInput').value.trim();
+            const result = document.getElementById('zipResult');
+            result.classList.remove('hidden');
+
+            if (validZips.includes(input)) {
+                result.className = "mt-3 text-center md:text-right font-medium text-sm text-emerald-700";
+                result.innerHTML = `<i class="fa-solid fa-circle-check"></i> Great news! ZIP code <strong>${input}</strong> is within our primary mobile service area.`;
+            } else if (input.length === 5) {
+                result.className = "mt-3 text-center md:text-right font-medium text-sm text-bronze-700";
+                result.innerHTML = `<i class="fa-solid fa-location-dot"></i> ZIP code <strong>${input}</strong> is near our primary zone! Call (425) 555-DETAIL for custom scheduling.`;
+            } else {
+                result.className = "mt-3 text-center md:text-right font-medium text-sm text-red-600";
+                result.innerHTML = "Please enter a valid 5-digit ZIP code.";
+            }
+        }
+
+        // Instant Quote Calculator
+        function calculateQuote() {
+            const vehicleCost = parseFloat(document.getElementById('calcVehicle').value) || 0;
+            const packageCost = parseFloat(document.getElementById('calcPackage').value) || 0;
+            
+            let addonTotal = 0;
+            if (document.getElementById('addonPet').checked) addonTotal += 45;
+            if (document.getElementById('addonOzone').checked) addonTotal += 55;
+            if (document.getElementById('addonLeather').checked) addonTotal += 40;
+            if (document.getElementById('addonEngine').checked) addonTotal += 50;
+
+            const grandTotal = vehicleCost + packageCost + addonTotal;
+            document.getElementById('quoteTotal').textContent = '$' + grandTotal.toFixed(2);
+        }
+
+        // Interactive Before & After Image Slider
+        const baContainer = document.getElementById('baSlider');
+        const baOverlay = document.getElementById('baOverlay');
+        const baHandle = document.getElementById('baHandle');
+        let isDragging = false;
+
+        if (baContainer) {
+            const moveSlider = (x) => {
+                const rect = baContainer.getBoundingClientRect();
+                let position = x - rect.left;
+                if (position < 0) position = 0;
+                if (position > rect.width) position = rect.width;
+                const percentage = (position / rect.width) * 100;
+                baOverlay.style.width = `${percentage}%`;
+                baHandle.style.left = `${percentage}%`;
+            };
+
+            baContainer.addEventListener('mousedown', () => isDragging = true);
+            window.addEventListener('mouseup', () => isDragging = false);
+            window.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                moveSlider(e.clientX);
+            });
+
+            baContainer.addEventListener('touchstart', () => isDragging = true);
+            window.addEventListener('touchend', () => isDragging = false);
+            window.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                moveSlider(e.touches[0].clientX);
+            });
+        }
+
+        // Booking Modal Controls & Dynamic Preview Generation
+        function openBookingModal(packageName = 'Deep Interior Sanctuary ($189)') {
+            document.getElementById('modalPackageField').value = packageName;
+            
+            // Reset views back to form mode
+            document.getElementById('bookingForm').classList.remove('hidden');
+            document.getElementById('confirmationView').classList.add('hidden');
+            document.getElementById('modalTitle').textContent = 'Schedule Your Appointment';
+            
+            document.getElementById('bookingModal').classList.remove('hidden');
+        }
+
+        function openBookingModalWithQuote() {
+            const total = document.getElementById('quoteTotal').textContent;
+            openBookingModal(`Custom Mobile Package (${total})`);
+        }
+
+        function closeBookingModal() {
+            document.getElementById('bookingModal').classList.add('hidden');
+        }
+
+        // Form Submit -> Generate Live SMS & Email Previews
+        function handleBookingSubmit(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('custName').value.trim() || 'John Doe';
+            const vehicle = document.getElementById('custVehicle').value.trim() || 'Vehicle';
+            const zip = document.getElementById('custZip').value.trim() || '98036';
+            const dateVal = document.getElementById('custDate').value;
+            const timeSlot = document.getElementById('custTime').value;
+            const pkg = document.getElementById('modalPackageField').value;
+
+            // Populate SMS Preview
+            document.getElementById('smsBodyText').innerHTML = `
+                Hi ${name}! Your mobile detailing appointment for <strong>${pkg}</strong> is confirmed for <strong>${dateVal}</strong> during <strong>${timeSlot}</strong> at ZIP <strong>${zip}</strong>.
+            `;
+
+            // Populate Email Preview
+            document.getElementById('emailCustName').textContent = name;
+            document.getElementById('emailCustVehicle').textContent = vehicle;
+            document.getElementById('emailCustDate').textContent = dateVal;
+            document.getElementById('emailCustTime').textContent = timeSlot;
+            document.getElementById('emailCustPackage').textContent = pkg;
+
+            // Switch view inside modal
+            document.getElementById('bookingForm').classList.add('hidden');
+            document.getElementById('confirmationView').classList.remove('hidden');
+            document.getElementById('modalTitle').textContent = 'Booking Confirmed!';
+        }
+
+        // Preview Tab Switcher
+        function switchPreviewTab(tab) {
+            const btnSms = document.getElementById('btnTabSms');
+            const btnEmail = document.getElementById('btnTabEmail');
+            const contentSms = document.getElementById('tabContentSms');
+            const contentEmail = document.getElementById('tabContentEmail');
+
+            if (tab === 'sms') {
+                btnSms.className = "flex-1 py-2 text-xs font-bold rounded-md bg-white text-charcoal-900 shadow-sm transition flex items-center justify-center gap-2";
+                btnEmail.className = "flex-1 py-2 text-xs font-bold rounded-md text-charcoal-800 hover:text-charcoal-900 transition flex items-center justify-center gap-2";
+                contentSms.classList.remove('hidden');
+                contentEmail.classList.add('hidden');
+            } else {
+                btnEmail.className = "flex-1 py-2 text-xs font-bold rounded-md bg-white text-charcoal-900 shadow-sm transition flex items-center justify-center gap-2";
+                btnSms.className = "flex-1 py-2 text-xs font-bold rounded-md text-charcoal-800 hover:text-charcoal-900 transition flex items-center justify-center gap-2";
+                contentEmail.classList.remove('hidden');
+                contentSms.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
